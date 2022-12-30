@@ -1,19 +1,7 @@
-<script context="module" lang="ts">
-	export function load({ url }: { url: URL }) {
-		const access_token = url.searchParams.get("access_token");
-		const token_type = url.searchParams.get("token_type");
-		return {
-			props: {
-				access_token,
-				token_type,
-			},
-		};
-	}
-</script>
-
 <script lang="ts">
-	export let token_type: string;
-	export let access_token: string;
+	import type { DiscordOauthData } from "./+page";
+	export let data: { props: DiscordOauthData };
+	let { token_type, access_token } = data.props;
 </script>
 
 <body>
