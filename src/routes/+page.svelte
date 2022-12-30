@@ -17,10 +17,8 @@
 			our users.</Content
 		>
 		<Actions>
-			<Button
-				variant="unelevated"
-				href="http://example.com"
-				use={[InitialFocus]}>Get started</Button
+			<Button variant="unelevated" href="/oauth" use={[InitialFocus]}
+				>Get started</Button
 			>
 			<Button
 				on:click={() => (get_signed_up_dialog = false)}
@@ -31,5 +29,5 @@
 		</Actions>
 	</Dialog>
 	<h1>Hello world</h1>
-	<Button variant="unelevated" href="http://example.com">Get started</Button>
+	<Button variant="unelevated" href="/oauth">Get started</Button>
 </body>
