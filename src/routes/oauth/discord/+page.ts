@@ -1,13 +1,14 @@
-
+import type { PageLoadEvent } from "./$types";
 /** @type {import('./$types').PageLoad} */
-export function load({url}: {url: URL}) {
-	const params = new URLSearchParams(url.hash.slice(1))
-	const access_token = params.get("access_token");
-	const token_type = params.get("token_type");
+export function load({url}: PageLoadEvent) {
+	
+	const params = new URLSearchParams()
+	const access_token = url.searchParams.get("access_token");
+	const token_type = url.searchParams.get("token_type");
 	return {
 		props: {
 			
-			access_token,
+			access_token: url,
 			token_type,
 		},
 	};
