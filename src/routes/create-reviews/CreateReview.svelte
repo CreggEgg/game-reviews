@@ -5,7 +5,7 @@
 	import Slider from "@smui/slider";
 	import Button from "@smui/button";
 
-	export let removeable;
+	export let removeable: boolean;
 	export let updateReview: (value: any) => void;
 	export let remove: Function;
 
@@ -32,8 +32,8 @@
 </script>
 
 <Paper>
-	<Content
-		><div id="card">
+	<Content>
+		<div id="card">
 			<Autocomplete options={games} bind:value label="Game" />
 			{#if inputtedValue}
 				<FormField
@@ -41,21 +41,22 @@
 					style="display: flex; width: 90%; flex-direction: column;
 					align-items: flex-start;"
 				>
+					<p
+						style="padding-right: 12px; width: max-content; display: block; margin-bottom: 0.5rem;"
+					>
+						Rating:
+					</p>
 					<Slider
 						min={0}
 						max={10}
-						step={0.1}
-						style="width: 100%;"
+						discrete
+						tickMarks
+						style="width: 90%;"
 						on:change={() => {
 							updateReview({ game: value, rating, tags: [tag1, tag2, tag3] });
 						}}
 						bind:value={rating}
 					/>
-					<span
-						style="padding-right: 12px; width: max-content; display: block; margin-bottom: 0.5rem;"
-					>
-						{rating} / 10
-					</span>
 
 					<div id="tag-selection">
 						<Autocomplete
@@ -85,18 +86,19 @@
 								updateReview({ game: value, rating, tags: [tag1, tag2, tag3] });
 							}}
 						/>
-					</div></FormField
-				>{/if}
+					</div>
+				</FormField>{/if}
 			{#if removeable}
 				<Button
 					on:click={() => {
 						remove();
 					}}
-					variant="unelevated">Remove</Button
+					variant="unelevated"
+					style="width: auto; margin-left: auto;">Remove</Button
 				>
 			{/if}
-		</div>
-	</Content>
+		</div></Content
+	>
 </Paper>
 
 <!-- <div id="card">
@@ -106,8 +108,13 @@
 	#card {
 		width: 100%;
 		height: 100%;
-		padding: 2rem;
+		display: flex;
+	}
+
+	#tag-selection {
 		display: grid;
-		grid-gap: 2vh;
+		grid-gap: 5px;
+		width: 100%;
+		grid-template-columns: repeat(3, 1fr);
 	}
 </style>

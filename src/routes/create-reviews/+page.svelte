@@ -10,14 +10,15 @@
 		if (reviews[index] === undefined || reviews[index] === null)
 			reviews[index] = {};
 		reviews[index] = value;
-		valid = reviews.some(
+		valid = !reviews.some(
 			(item) =>
-				item !== undefined &&
-				item !== null &&
-				item.hasOwnProperty("game") &&
-				item.hasOwnProperty("rating") &&
-				item.hasOwnProperty("tags") &&
-				item["tags"].includes(null)
+				item === undefined ||
+				item === null ||
+				!item.hasOwnProperty("game") ||
+				!item.hasOwnProperty("rating") ||
+				!item.hasOwnProperty("tags") ||
+				item["tags"].includes(null) ||
+				item["tags"].includes(undefined)
 		);
 	}
 
@@ -29,8 +30,6 @@
 </script>
 
 <div>
-	{valid}
-	{JSON.stringify(reviews)}
 	{#each reviews as review, i}
 		<CreateReview
 			updateReview={(value) => {
@@ -49,6 +48,11 @@
 			reviews = [...reviews, undefined];
 		}}
 		style="width: 30%; margin: auto;">+</Button
+	>
+	<Button
+		variant="unelevated"
+		disabled={!valid}
+		style="width: 30%; margin: auto;">Submit</Button
 	>
 </div>
 
