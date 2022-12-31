@@ -27,8 +27,7 @@
 
 		if (discordData !== undefined) {
 			profileData.set({
-				profilePicture:
-					"https://avatars.githubusercontent.com/u/15117?s=80&v=4",
+				profilePicture: `https://cdn.discordapp.com/avatars/${discordData.id}/${discordData.avatar}.webp?size=80`,
 				username: discordData.username,
 				id: "1",
 			});
