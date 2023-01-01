@@ -62,7 +62,6 @@
 						<Autocomplete
 							options={tags}
 							bind:value={tag1}
-							textfield$variant="outlined"
 							label="Tag"
 							on:change={() => {
 								updateReview({ game: value, rating, tags: [tag1, tag2, tag3] });
@@ -71,7 +70,6 @@
 						<Autocomplete
 							options={tags}
 							bind:value={tag2}
-							textfield$variant="outlined"
 							label="Tag"
 							on:change={() => {
 								updateReview({ game: value, rating, tags: [tag1, tag2, tag3] });
@@ -80,7 +78,6 @@
 						<Autocomplete
 							options={tags}
 							bind:value={tag3}
-							textfield$variant="outlined"
 							label="Tag"
 							on:change={() => {
 								updateReview({ game: value, rating, tags: [tag1, tag2, tag3] });

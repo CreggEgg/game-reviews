@@ -1,6 +1,9 @@
 <script lang="ts">
 	import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
+	import Menu from "@smui/menu";
+	import List, { Item, Separator, Text } from "@smui/list";
 	import Button from "@smui/button";
+	import Ripple from "@smui/ripple";
 	import { profileData, type ProfileData } from "./oauth/oauth";
 
 	let profile = null as ProfileData;
@@ -15,6 +18,9 @@
 		profilePicture = profile.profilePicture;
 	}
 	let active: string;
+	let menu: any;
+
+	function logout() {}
 </script>
 
 <TopAppBar style="margin-bottom: 2vh;" variant="static" color="primary">
@@ -25,7 +31,23 @@
 		{#if signed_in}
 			<Section align="end" toolbar>
 				<Title>{username}</Title>
-				<img id="pfp" src={profilePicture} alt="user profile" />
+				<img
+					id="pfp"
+					use:Ripple={{ surface: true }}
+					on:click={() => {
+						menu.setOpen(true);
+					}}
+					src={profilePicture}
+					alt="user profile"
+				/>
+				<Menu bind:this={menu}>
+					<List>
+						<Separator />
+						<Item on:SMUI:action={() => logout()}>
+							<Text>Sign out</Text>
+						</Item>
+					</List>
+				</Menu>
 			</Section>
 		{/if}
 	</Row>
@@ -36,7 +58,8 @@
 <style>
 	#pfp {
 		height: 100%;
-		margin-left: 2vw;
+		margin-left: 0.5vw;
+		margin-right: 2vw;
 		border-radius: 100px;
 	}
 </style>

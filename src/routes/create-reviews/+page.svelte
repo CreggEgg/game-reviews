@@ -1,8 +1,7 @@
 <script lang="ts">
-	import CreateReview from "./CreateReview.svelte";
 	import Button from "@smui/button";
 	import type Rating from "./review";
-	//import CreateReview from "./CreateReview.svelte";
+	import CreateReview from "./CreateReview.svelte";
 
 	let reviews: Rating[] = [undefined, undefined, undefined];
 

@@ -16,6 +16,9 @@
 		"@smui/card": "^7.0.0-beta.0",
 		"@smui/common": "^7.0.0-beta.0",
 		"@smui/dialog": "^7.0.0-beta.0",
+		"@smui/list": "^7.0.0-beta.0",
+		"@smui/menu": "^7.0.0-beta.0",
+		"@smui/ripple": "^7.0.0-beta.0",
 		"@smui/tab": "^7.0.0-beta.0",
 		"@smui/tab-bar": "^7.0.0-beta.0",
 		"@smui/top-app-bar": "^7.0.0-beta.0",
@@ -35,6 +38,7 @@
 	"type": "module",
 	"dependencies": {
 		"@supabase/supabase-js": "^2.2.3",
-		"svelte-material-ui": "^7.0.0-beta.0"
+		"svelte-material-ui": "^7.0.0-beta.0",
+		"uuid": "^9.0.0"
 	}
 }
