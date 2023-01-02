@@ -31,6 +31,7 @@
 		{#if signed_in}
 			<Section align="end" toolbar>
 				<Title>{username}</Title>
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<img
 					id="pfp"
 					use:Ripple={{ surface: true }}

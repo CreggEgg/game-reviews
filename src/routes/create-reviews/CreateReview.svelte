@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Paper, { Title, Subtitle, Content } from "@smui/paper";
+	import Paper, { Content } from "@smui/paper";
 	import Autocomplete from "@smui-extra/autocomplete";
 	import FormField from "@smui/form-field";
 	import Slider from "@smui/slider";
@@ -39,7 +39,7 @@
 				<FormField
 					align="end"
 					style="display: flex; width: 90%; flex-direction: column;
-					align-items: flex-start;"
+					align-items: flex-start; margin-left: 2vw;"
 				>
 					<p
 						style="padding-right: 12px; width: max-content; display: block; margin-bottom: 0.5rem;"
@@ -51,7 +51,7 @@
 						max={10}
 						discrete
 						tickMarks
-						style="width: 90%;"
+						style="width: 90%; margin-left: 0;"
 						on:change={() => {
 							updateReview({ game: value, rating, tags: [tag1, tag2, tag3] });
 						}}

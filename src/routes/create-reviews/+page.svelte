@@ -1,7 +1,13 @@
 <script lang="ts">
+	import CreateReview from "./CreateReview.svelte";
 	import Button from "@smui/button";
 	import type Rating from "./review";
-	import CreateReview from "./CreateReview.svelte";
+	import { type ProfileData, profileData } from "../oauth/oauth";
+
+	let currentProfileData: ProfileData = null;
+
+	profileData.subscribe((value) => (currentProfileData = value));
+	//import CreateReview from "./CreateReview.svelte";
 
 	let reviews: Rating[] = [undefined, undefined, undefined];
 
@@ -51,6 +57,20 @@
 	<Button
 		variant="unelevated"
 		disabled={!valid}
+		on:click={async () => {
+			const response = await fetch("/api/create-reviews", {
+				method: "POST",
+				body: JSON.stringify({
+					id: currentProfileData?.id,
+					reviews,
+				}),
+				headers: {
+					"content-type": "application/json",
+				},
+			});
+			let responseData = await response.json();
+			console.log(responseData);
+		}}
 		style="width: 30%; margin: auto;">Submit</Button
 	>
 </div>
