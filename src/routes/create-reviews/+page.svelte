@@ -3,6 +3,7 @@
 	import Button from "@smui/button";
 	import type Rating from "./review";
 	import { type ProfileData, profileData } from "../oauth/oauth";
+	import { goto } from "$app/navigation";
 
 	let currentProfileData: ProfileData = null;
 
@@ -70,6 +71,11 @@
 			});
 			let responseData = await response.json();
 			console.log(responseData);
+			if (responseData) {
+				await goto("/");
+			} else {
+				await goto("/error");
+			}
 		}}
 		style="width: 30%; margin: auto;">Submit</Button
 	>
